@@ -1,4 +1,4 @@
-import { IsString, MaxLength, IsNotEmpty, IsEmail, MinLength } from "class-validator";
+import { IsString, MaxLength, IsNotEmpty } from "class-validator";
 
 export class LabyrinthDto {
     @IsString({ message: 'name must be a string' })

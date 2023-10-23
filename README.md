@@ -8,6 +8,4 @@ Steps To Run Backend
 
 4) Run server using command (npm run start)
 
-5) Run tests using command (npm run test)
-
-6) Postman Collection is there in root path in postman-collection folder
+5) Postman Collection is there in root path in postman-collection folder

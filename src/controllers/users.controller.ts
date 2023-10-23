@@ -26,7 +26,7 @@ const createUser = async (req: Request, res: Response) => {
     const user = new User({
       ...newUser
     });
-    // Save the new Task instance to the database
+    // Save the new User instance to the database
     await user.save();
     delete user.password
     return res.status(200).json({
