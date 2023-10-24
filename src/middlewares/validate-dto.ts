@@ -2,6 +2,11 @@ import { validate } from 'class-validator';
 import { Request, Response, NextFunction } from 'express';
 import { UserDto } from 'src/dto/user.request.dto';
 
+/**
+   * @remarks
+     User Data validation middleware
+   *
+*/
 export async function validateUserDto(
   req: any,
   res: Response,

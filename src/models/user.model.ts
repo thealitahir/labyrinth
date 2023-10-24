@@ -1,5 +1,11 @@
 import mongoose from 'mongoose'
 import bcrypt from 'bcryptjs'
+
+/**
+   * @remarks
+     User Model Schema
+   *
+*/
 const userSchema = new mongoose.Schema({
   name: {
     type: String,

@@ -1,5 +1,10 @@
 import { IsString, IsNotEmpty, IsEmail, MaxLength, MinLength } from 'class-validator';
 
+/**
+   * @remarks
+     Dto for User
+   *
+*/
 export class UserDto {
   @IsString({ message: 'name must be a string' })
   @MaxLength(30)

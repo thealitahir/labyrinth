@@ -1,5 +1,10 @@
 const mongoose = require('mongoose');
 
+/**
+   * @remarks
+     Lybrinth Model Schema
+   *
+*/
 const labyrinthSchema = new mongoose.Schema({
     userId: {
         type: mongoose.Schema.Types.ObjectId,

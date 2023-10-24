@@ -4,8 +4,15 @@ import { validate } from 'class-validator';
 import Labyrinth from '../models/labyrinth.model'
 import { LabyrinthDto } from '../dto/labyrinth.request.dto';
 
-
-const getLabyrinths = async (req: any, res: Response) => {
+/**
+   * Returns the user lybrinths Information.
+   *
+   * @remarks
+   *
+   * @returns logged in user lybrinths list
+   *
+*/
+const fetchLabyrinths = async (req: any, res: Response) => {
     try {
         const data = await Labyrinth.find({
             userId: req.user.userId
@@ -20,11 +27,20 @@ const getLabyrinths = async (req: any, res: Response) => {
     }
 };
 
-const getLabyrinthById = async (req: any, res: Response) => {
+/**
+   * Returns the lybrinth information.
+   *
+   * @remarks
+   *
+   * @param id - The first input is id (string)
+   * @returns lybrinth information
+   *
+*/
+const fetchLabyrinthById = async (req: any, res: Response) => {
     try {
         const data = await Labyrinth.findOne({
             userId: req.user.userId,
-            _id:req.params.id
+            _id: req.params.id
         })
         return res.status(200).json({
             status: true,
@@ -36,7 +52,16 @@ const getLabyrinthById = async (req: any, res: Response) => {
     }
 };
 
-const createLabyrinth = async (req: any, res: Response) => {
+/**
+   * Returns the lybrinth id.
+   *
+   * @remarks
+   *
+   * @param name - The first input is name (string)
+   * @returns newly created lybrinth id
+   *
+*/
+const createNewLabyrinth = async (req: any, res: Response) => {
     try {
         const data = plainToClass(LabyrinthDto, req.body);
         const errors = await validate(data);
@@ -63,7 +88,18 @@ const createLabyrinth = async (req: any, res: Response) => {
     }
 };
 
-const updatedLabyrinth = async (req, res) => {
+/**
+   * Returns the lybrinths information.
+   *
+   * @remarks
+   *
+   * @param x - The first input is x
+   * @param y - The second input is y 
+   * @param type - The third input is type (string) 
+   * @returns lybrinth updated information
+   *
+*/
+const updateLabyrinth = async (req, res) => {
     try {
         const { id, x, y, type } = req.params;
 
@@ -84,20 +120,29 @@ const updatedLabyrinth = async (req, res) => {
         updatedStructure[x][y] = type;
         found.structure = updatedStructure;
 
-        const updatedResponse = await Labyrinth.findOneAndUpdate({ _id: id }, { $set: { structure: updatedStructure } }, { new: true });
+        const updatedLybrinth = await Labyrinth.findOneAndUpdate({ _id: id }, { $set: { structure: updatedStructure } }, { new: true });
 
         return res.status(200).json({
             status: true,
             message: 'Updated labyrinth successfully.',
-            data: updatedResponse,
+            data: updatedLybrinth,
         });
     } catch (error) {
         res.status(422).json({ status: false, error: error.message });
     }
 };
 
-
-const updatedLabyrinthStartCords = async (req, res) => {
+/**
+   * Returns the lybrinths information.
+   *
+   * @remarks
+   *
+   * @param x - The first input is x
+   * @param y - The second input is y
+   * @returns lybrinth updated information with start cooridnates
+   *
+*/
+const updateLabyrinthStartCoordinates = async (req, res) => {
     try {
         const { id, x, y } = req.params;
 
@@ -105,7 +150,7 @@ const updatedLabyrinthStartCords = async (req, res) => {
         if (!found) {
             return res.status(403).send('Failed to find the labyrinth.');
         }
-        const updatedResponse = await Labyrinth.findOneAndUpdate({ _id: id }, {
+        const updatedLybrinth = await Labyrinth.findOneAndUpdate({ _id: id }, {
             $set: {
                 start: {
                     x,
@@ -116,14 +161,24 @@ const updatedLabyrinthStartCords = async (req, res) => {
         return res.status(200).json({
             status: true,
             message: "Starting point set successfully.",
-            data: updatedResponse
+            data: updatedLybrinth
         });
     } catch (error) {
         res.status(422).json({ status: false, error: error.message });
     }
 };
 
-const updatedLabyrinthEndCords = async (req, res) => {
+/**
+   * Returns the lybrinth Information.
+   *
+   * @remarks
+   *
+   * @param x - The first input is x
+   * @param y - The second input is y
+   * @returns lybrinth updated information with end coordinates
+   *
+*/
+const updateLabyrinthEndCoordinates = async (req, res) => {
     try {
         const { id, x, y } = req.params;
 
@@ -131,7 +186,7 @@ const updatedLabyrinthEndCords = async (req, res) => {
         if (!found) {
             return res.status(403).send('Failed to find the labyrinth.');
         }
-        const updatedResponse = await Labyrinth.findOneAndUpdate({ _id: id }, {
+        const updatedLybrinth = await Labyrinth.findOneAndUpdate({ _id: id }, {
             $set: {
                 end: {
                     x: parseInt(x),
@@ -142,14 +197,23 @@ const updatedLabyrinthEndCords = async (req, res) => {
         return res.status(200).json({
             status: true,
             message: "Ending point set successfully.",
-            data: updatedResponse
+            data: updatedLybrinth
         });
     } catch (error) {
         res.status(422).json({ status: false, error: error.message });
     }
 };
 
-const getLabyrinthSolution = async (req, res) => {
+/**
+   * Returns the solution for lybrinth.
+   *
+   * @remarks
+   *
+   * @param id - The first input is id (string)
+   * @returns solution for current lybrinth
+   *
+*/
+const calculateLabyrinthSolution = async (req, res) => {
     try {
         const { id } = req.params;
         const found = await Labyrinth.findById(id)
@@ -164,6 +228,16 @@ const getLabyrinthSolution = async (req, res) => {
     }
 }
 
+/**
+   * Helper Function  
+   * Returns the Created User Information.
+   *
+   * @remarks
+   *
+   * @param lybrinth - The first input is lybrinth (object)
+   * @returns calculation for current lybrinth
+   *
+*/
 function calculateSolution(labyrinth) {
     const visited = new Set();
     const start = labyrinth.start;
@@ -231,4 +305,4 @@ function calculateSolution(labyrinth) {
 }
 
 
-export { getLabyrinths, getLabyrinthById, createLabyrinth, updatedLabyrinth, updatedLabyrinthStartCords, updatedLabyrinthEndCords, getLabyrinthSolution }
+export { fetchLabyrinths, fetchLabyrinthById, createNewLabyrinth, updateLabyrinth, updateLabyrinthStartCoordinates, updateLabyrinthEndCoordinates, calculateLabyrinthSolution }

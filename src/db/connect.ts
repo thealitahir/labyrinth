@@ -2,6 +2,11 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv'
 
+/**
+   * @remarks
+     Database Connection Establish
+   *
+*/
 dotenv.config()
 const connectionString = process.env.MONGO_URI || '';
 console.log("connectionString",connectionString)

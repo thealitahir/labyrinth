@@ -8,10 +8,20 @@ import * as dotenv from 'dotenv'
 import User from '../models/user.model'
 dotenv.config();
 
-// make a controller for create a user
+/**
+   * Returns the Created User Information.
+   *
+   * @remarks
+   *
+   * @param name - The first input is name (string)
+   * @param email - The second input is email (string) 
+   * @param password - The third input is password (string) 
+   * @returns newly created user information
+   *
+*/
 const createUser = async (req: Request, res: Response) => {
   try {
-    const newUser = plainToClass(UserDto, req.body); 
+    const newUser = plainToClass(UserDto, req.body);
     const errors = await validate(newUser);
 
     if (errors.length > 0) {
@@ -19,7 +29,7 @@ const createUser = async (req: Request, res: Response) => {
     }
 
     const savedUser = await User.findOne({ email: req.body.email });
-    if(savedUser) {
+    if (savedUser) {
       return res.status(422).json({ status: false, error: "User with this email already exists" });
     }
 
@@ -39,9 +49,19 @@ const createUser = async (req: Request, res: Response) => {
   }
 };
 
+/**
+   * Returns the User information along with user token.
+   *
+   * @remarks
+   *
+   * @param email - The second input is email (string) 
+   * @param password - The third input is password (string) 
+   * @returns the user information along with user token
+   *
+*/
 const loginUser = async (req: Request, res: Response) => {
   try {
-    const user = plainToClass(UserLoginDto, req.body); 
+    const user = plainToClass(UserLoginDto, req.body);
     const errors = await validate(user);
 
     if (errors.length > 0) {

@@ -1,5 +1,10 @@
 import jwt from 'jsonwebtoken'
 
+/**
+   * @remarks
+     Authentication middleware to ensure request is done along with user token
+   *
+*/
 export function authenticateToken(req, res, next) {
     const token = req.header("Authorization");
     if (!token) {

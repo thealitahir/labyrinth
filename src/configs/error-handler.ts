@@ -1,6 +1,11 @@
 // 404 - not found error handler
 import { Request, Response, NextFunction } from 'express';
 
+/**
+   * @remarks
+     Error Handling Middleware
+   *
+*/
 const notFoundRoute = (req:Request, res:Response, next:NextFunction) => {
     res.status(404).json({ message: "Sorry! Your request page was not found." });
   };
