@@ -261,6 +261,37 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Get Lybrinth by id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{test_task_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/labyrinth/data/65368716c7f5fc6600266f04",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"labyrinth",
+						"data",
+						"65368716c7f5fc6600266f04"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

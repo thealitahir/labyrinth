@@ -20,6 +20,22 @@ const getLabyrinths = async (req: any, res: Response) => {
     }
 };
 
+const getLabyrinthById = async (req: any, res: Response) => {
+    try {
+        const data = await Labyrinth.findOne({
+            userId: req.user.userId,
+            _id:req.params.id
+        })
+        return res.status(200).json({
+            status: true,
+            message: "Labyrinth Get successfully.",
+            data
+        });
+    } catch (error: any) {
+        res.status(422).json({ status: false, error: error.message });
+    }
+};
+
 const createLabyrinth = async (req: any, res: Response) => {
     try {
         const data = plainToClass(LabyrinthDto, req.body);
@@ -215,4 +231,4 @@ function calculateSolution(labyrinth) {
 }
 
 
-export { getLabyrinths, createLabyrinth, updatedLabyrinth, updatedLabyrinthStartCords, updatedLabyrinthEndCords, getLabyrinthSolution }
+export { getLabyrinths, getLabyrinthById, createLabyrinth, updatedLabyrinth, updatedLabyrinthStartCords, updatedLabyrinthEndCords, getLabyrinthSolution }
