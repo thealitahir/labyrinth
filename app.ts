@@ -39,7 +39,7 @@ app.use(notFoundRoute);
 app.use(errorHandler);
 
 // Listen on the defined port from environment variables
-app.listen(5000, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log("Backend server running on: " + process.env.PORT);
 });
 

@@ -21,12 +21,12 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:5000/user/sign-up",
+					"raw": "http://localhost:3000/user/sign-up",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "5000",
+					"port": "3000",
 					"path": [
 						"user",
 						"sign-up"
@@ -50,12 +50,12 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:5000/user/login",
+					"raw": "http://localhost:3000/user/login",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "5000",
+					"port": "3000",
 					"path": [
 						"user",
 						"login"
@@ -89,12 +89,12 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:5000/labyrinth",
+					"raw": "http://localhost:3000/labyrinth",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "5000",
+					"port": "3000",
 					"path": [
 						"labyrinth"
 					]
@@ -118,12 +118,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:5000/labyrinth",
+					"raw": "http://localhost:3000/labyrinth",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "5000",
+					"port": "3000",
 					"path": [
 						"labyrinth"
 					]
@@ -147,12 +147,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:5000/labyrinth/65368716c7f5fc6600266f04/solution",
+					"raw": "http://localhost:3000/labyrinth/65368716c7f5fc6600266f04/solution",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "5000",
+					"port": "3000",
 					"path": [
 						"labyrinth",
 						"65368716c7f5fc6600266f04",
@@ -178,12 +178,12 @@
 				"method": "PUT",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:5000/labyrinth/653664a9ae06fc8ae90908cb/playfield/3/6/empty",
+					"raw": "http://localhost:3000/labyrinth/653664a9ae06fc8ae90908cb/playfield/3/6/empty",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "5000",
+					"port": "3000",
 					"path": [
 						"labyrinth",
 						"653664a9ae06fc8ae90908cb",
@@ -212,12 +212,12 @@
 				"method": "PUT",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:5000/labyrinth/653664a9ae06fc8ae90908cb/start/1/0",
+					"raw": "http://localhost:3000/labyrinth/653664a9ae06fc8ae90908cb/start/1/0",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "5000",
+					"port": "3000",
 					"path": [
 						"labyrinth",
 						"653664a9ae06fc8ae90908cb",
@@ -245,12 +245,12 @@
 				"method": "PUT",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:5000/labyrinth/65368338c7f5fc6600266f02/end/2/6",
+					"raw": "http://localhost:3000/labyrinth/65368338c7f5fc6600266f02/end/2/6",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "5000",
+					"port": "3000",
 					"path": [
 						"labyrinth",
 						"65368338c7f5fc6600266f02",
@@ -278,12 +278,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:5000/labyrinth/data/65368716c7f5fc6600266f04",
+					"raw": "http://localhost:3000/labyrinth/data/65368716c7f5fc6600266f04",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "5000",
+					"port": "3000",
 					"path": [
 						"labyrinth",
 						"data",

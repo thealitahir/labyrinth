@@ -244,10 +244,12 @@ function calculateSolution(labyrinth) {
     const end = labyrinth.end;
 
     function dfs(x, y, path = []) {
+        //base case
         if (x === end.x && y === end.y) {
             return path;
         }
 
+        //out of bound or already visited check
         if (
             x < 0 || y < 0 ||
             x >= Object.keys(labyrinth.structure).length ||
@@ -265,6 +267,7 @@ function calculateSolution(labyrinth) {
 
         let shortestPath = null;
 
+
         for (const dir of directions) {
             let newX = x, newY = y;
             if (dir === 'up') {
@@ -277,6 +280,7 @@ function calculateSolution(labyrinth) {
                 newY++;
             }
 
+            //new step validation
             if (
                 newX >= 0 && newY >= 0 &&
                 newX < Object.keys(labyrinth.structure).length &&
